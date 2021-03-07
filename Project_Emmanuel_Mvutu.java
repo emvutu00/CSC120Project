@@ -10,7 +10,10 @@ public class Project_Emmanuel_Mvutu
       int resolution = 0;//to hold the place of resolution
       double multiplier = 0;//to hold the place of resolution multiplier
       double performanceScore = 0;//to hold the place of performance score
-      String recommendedGraphicQuality;
+      
+      String recommendedGraphicQuality;//the results of the performance score
+      String results = "Computer Hardware Graphics Quality Recommendation Tool";//title of the outputs
+      String monitor;//resolution written out
       
       //represents the resolution options
       final int RESOLUTION_1 = 1;
@@ -56,28 +59,32 @@ public class Project_Emmanuel_Mvutu
          {
             multiplier = .55;
          }
-      else
+      else if(resolution == RESOLUTION_4)
          {
             multiplier = .35;
+         }
+      else
+         {
+            System.out.println("invalid input, type the monitor resolution.");
          }
          
       //calculate the performance score from the given inputs from the user
       performanceScore = ((5 * GPUClockSpeed) + (numOfCores * CPUClockSpeed)) * multiplier;
       
-      //
-      if(performanceScore >= 17000)
+      //using an if/else if statement to handle the user's recommended graphic quality
+      if(performanceScore > 17000)
          {
             recommendedGraphicQuality = "Ultra";
          }
-      else if(performanceScore >= 15000 && performanceScore <= 17000)
+      else if(performanceScore > 15000 && performanceScore <= 17000)
          {
             recommendedGraphicQuality = "High";
          }
-      else if(performanceScore >= 13000 && performanceScore <= 15000)
+      else if(performanceScore > 13000 && performanceScore <= 15000)
          {
             recommendedGraphicQuality = "Medium";
          }
-      else if(performanceScore >= 11000 && performanceScore <= 13000)
+      else if(performanceScore > 11000 && performanceScore <= 13000)
          {
             recommendedGraphicQuality = "Low";
          }
@@ -85,6 +92,32 @@ public class Project_Emmanuel_Mvutu
          {
             recommendedGraphicQuality = "Unable to play";
          }
-      
+         
+         //this if/else if statement is for the output of the monitor resolution display
+         if(resolution == RESOLUTION_1)
+         {
+            monitor = "1280 x 720";
+         }
+      else if(resolution == RESOLUTION_2)
+         {
+            monitor = "1920 x 1080";
+         }
+      else if(resolution == RESOLUTION_3)
+         {
+            monitor = "2560 x 1440";
+         }
+      else 
+         {
+            monitor = "3840 x 2160";
+         }
+    
+    //Display the outputs of the whole code
+    System.out.println(results);
+    System.out.println("\nThe GPU clock speed: " + GPUClockSpeed + "MHz");
+    System.out.println("The CPU clock speed: " + CPUClockSpeed + "MHz");
+    System.out.println("The number of cores: " + numOfCores);
+    System.out.println("The monitor of resolution: " + monitor);
+    System.out.printf("The Performance Score: %,.3f",performanceScore);
+    System.out.println("\nThe Recommended Graphic Quality: " + recommendedGraphicQuality);
    }
 }
