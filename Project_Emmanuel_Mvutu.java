@@ -216,10 +216,10 @@ public class Project_Emmanuel_Mvutu
       }//end of the for loop
       
       //display the highest performance score
-      System.out.printf("The highest performance score was: %.2f", highestPerformanceScore);
+      System.out.printf("The highest performance score was: %.3f", highestPerformanceScore);
       
       //display the lowest performance score
-      System.out.printf("\nThe lowest performance score was: %.2f", lowestPerformanceScore);
+      System.out.printf("\nThe lowest performance score was: %.3f", lowestPerformanceScore);
       
    }//end of main
 }//end of class
