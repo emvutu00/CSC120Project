@@ -11,6 +11,10 @@ public class Project_Emmanuel_Mvutu
       int resolution = 0;//to hold the place of resolution
       double multiplier = 0;//to hold the place of resolution multiplier
       double performanceScore = 0;//to hold the place of performance score
+      boolean firstComputer = true;//this variable is keep track of whether or not this is the first computer
+      boolean anotherFirstComputer = true;//this variable is keep track of whether or not this is the first computer
+      double highestPerformanceScore = 0;//this variable is to keep track of the highest performance score
+      double lowestPerformanceScore = 0;//this variable is to keep track of the lowest performance score
       
       String recommendedGraphicQuality;//the results of the performance score
       String results = "Computer Hardware Graphics Quality Recommendation Tool";//title of the outputs
@@ -28,7 +32,7 @@ public class Project_Emmanuel_Mvutu
       System.out.println("Enter the number of computers that they wish to enter information for.");
       numOfComputers = keyboard.nextInt();
       
-      //validate the user's input
+      //validate the user's input with a while loop
       while(numOfComputers < 1)
       {
          System.out.println("Number of computers should be at least one. please enter a valid number");//display invalid input message
@@ -46,7 +50,7 @@ public class Project_Emmanuel_Mvutu
          System.out.print("Enter the clock speed(in Megahertz) of their graphics card (GPU): ");
          GPUClockSpeed = keyboard.nextInt();
          
-         //validate the clock speed of the GPU
+         //validate the clock speed of the GPU with a while loop
          while(GPUClockSpeed < 800 || GPUClockSpeed > 2000)
          {
             //display invalid message if the input isnt valid
@@ -59,7 +63,7 @@ public class Project_Emmanuel_Mvutu
          System.out.print("Enter the clock speed(in Megahertz) of their processor (CPU): ");
          CPUClockSpeed = keyboard.nextInt();
          
-         //validate the clock speed for the CPU
+         //validate the clock speed for the CPU with a while loop
          while(CPUClockSpeed < 1000 || CPUClockSpeed > 5500)
          {
             //display invalid message if the input isnt valid
@@ -72,7 +76,7 @@ public class Project_Emmanuel_Mvutu
          System.out.print("Enter the number of cores that their processor(CPU) has: ");
          numOfCores = keyboard.nextInt();
          
-         //validate the number of cores
+         //validate the number of cores with a while loop
          while(numOfCores < 1 || numOfCores > 16)
          {
             //display invalid message if the input isnt valid
@@ -92,7 +96,7 @@ public class Project_Emmanuel_Mvutu
          System.out.print("\nPlease select your resolution from above: ");
          resolution = keyboard.nextInt();
          
-         //validate the resolution choice
+         //validate the resolution choice with a while loop
          while(resolution < 1 || resolution > 4)
          {
             //display invalid message if the input isnt valid
@@ -165,6 +169,39 @@ public class Project_Emmanuel_Mvutu
             {
                monitor = "3840 x 2160";
             }
+            
+         //if this is the first computer then it automatically have the highest preformance because it's the only computer so far
+         if(firstComputer)
+         {
+            highestPerformanceScore = performanceScore;
+            firstComputer = false;//now we made the first computer to false in order to check on the other computers
+         }
+         else
+         {
+            //this is to check if the current computer has the highest performance score
+            if(performanceScore > highestPerformanceScore)
+            {
+               //if true then the highest performance score has been updated
+               highestPerformanceScore = performanceScore;
+            }
+         }
+         
+         //if this is the first computer then it automatically have the lowest preformance because it's the only computer so far
+         if(anotherFirstComputer)
+         {
+            lowestPerformanceScore = performanceScore;
+            anotherFirstComputer = false;//now we made the first computer to false in order to check on the other computers
+         }
+         else
+         {
+            //this is to check if the current computer has the lowest performance score
+            if(performanceScore < lowestPerformanceScore)
+            {
+               //if true then the lowest performance score has been updated
+               lowestPerformanceScore = performanceScore;
+            }
+         }
+
     
          //Display the outputs of the whole code
          System.out.println("\nThe GPU clock speed: " + GPUClockSpeed + "MHz");
@@ -176,6 +213,13 @@ public class Project_Emmanuel_Mvutu
          
          //make space for the next information and output for the next computer
          System.out.println();
-      }
-   }
-}
+      }//end of the for loop
+      
+      //display the highest performance score
+      System.out.printf("The highest performance score was: %.2f", highestPerformanceScore);
+      
+      //display the lowest performance score
+      System.out.printf("\nThe lowest performance score was: %.2f", lowestPerformanceScore);
+      
+   }//end of main
+}//end of class
