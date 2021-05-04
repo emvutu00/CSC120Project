@@ -38,7 +38,7 @@ public class Project_Emmanuel_Mvutu
          numOfComputers = keyboard.nextInt();//let user enter a valid number
       }
       
-      //showing the title
+      //the title method for displaying the title
       displayTitle();
       
       //use a for loop to get the user's information
@@ -84,16 +84,8 @@ public class Project_Emmanuel_Mvutu
             numOfCores = keyboard.nextInt();//let user enter a valid number
          }
       
-         //Display the monitor resolution
-         System.out.println("What is the resolution of your monitor?");
-         System.out.println("1. 1280 x 720");
-         System.out.println("2. 19280 x 1080");
-         System.out.println("3. 2560 x 1440");
-         System.out.println("4. 3840 x 2160");
-      
-         //ask the user to select their resolution
-         System.out.print("\nPlease select your resolution from above: ");
-         resolution = keyboard.nextInt();
+         //the resolution method to get the user's choice of resollution
+         getResolutionString();;
          
          //validate the resolution choice with a while loop
          while(resolution < 1 || resolution > 4)
@@ -228,6 +220,24 @@ public class Project_Emmanuel_Mvutu
       String title = "Computer Hardware Graphics Quality Recommendation Tool";//title of the outputs
       
       System.out.println("\n" + title + "\n");//diplaying the title
-   }
+   }//end of displayTitle method
+   
+   public static void getResolutionString()
+   {
+      int resolution = 0;//to hold the place of resolution
+      
+      Scanner keyboard = new Scanner(System.in);//creating a Scanner object for  the user's input
+      
+      //Display the monitor resolution
+      System.out.println("What is the resolution of your monitor?");
+      System.out.println("1. 1280 x 720");
+      System.out.println("2. 19280 x 1080");
+      System.out.println("3. 2560 x 1440");
+      System.out.println("4. 3840 x 2160");
+      
+      //ask the user to select their resolution
+      System.out.print("\nPlease select your resolution from above: ");
+      resolution = keyboard.nextInt();
+   }//end of getResolutionString method
 
 }//end of class
