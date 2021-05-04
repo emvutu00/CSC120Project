@@ -8,7 +8,7 @@ public class Project_Emmanuel_Mvutu
       int GPUClockSpeed = 0;//to hold the place of GPU clock speed
       int CPUClockSpeed = 0;//to hold the place of CPU clock speed
       int numOfCores = 0;//to hold the place of the number of cores
-      int resolution = 0;//to hold the place of resolution
+      double resolution = 0;//to hold the place of resolution
       double multiplier = 0;//to hold the place of resolution multiplier
       double performanceScore = 0;//to hold the place of performance score
       boolean firstComputer = true;//this variable is keep track of whether or not this is the first computer
@@ -80,12 +80,12 @@ public class Project_Emmanuel_Mvutu
          {
             //display invalid message if the input isnt valid
             System.out.println("Invalid input. The number of cores should range between 1 to 16."
-                              + " Enter a valid input");
+                              + " Enter a valid input: ");
             numOfCores = keyboard.nextInt();//let user enter a valid number
          }
       
          //the resolution method to get the user's choice of resollution
-         getResolutionString();;
+         getResolutionString();
          
          //validate the resolution choice with a while loop
          while(resolution < 1 || resolution > 4)
@@ -93,31 +93,12 @@ public class Project_Emmanuel_Mvutu
             //display invalid message if the input isnt valid
             System.out.println("Invalid input. The resolution choice should range between 1 to 4."
                               + " Enter a valid input");
-            resolution = keyboard.nextInt();//let user enter a valid number
+            resolution = keyboard.nextDouble();//let user enter a valid number
          }
       
-         //using an if/else if statement to handle the user's resolution selection
-         if(resolution == RESOLUTION_1)
-            {
-               multiplier = 1;
-            }
-         else if(resolution == RESOLUTION_2)
-            {
-               multiplier = .75;
-            }
-         else if(resolution == RESOLUTION_3)
-            {
-               multiplier = .55;
-            }
-         else if(resolution == RESOLUTION_4)
-            {
-               multiplier = .35;
-            }
-         else
-            {
-               System.out.println("invalid input, type the monitor resolution.");
-            }
-         
+         //the multiplier method returns the value of the multiplier to the main method
+         multiplier = getMultiplierValue(resolution);
+                  
          //calculate the performance score from the given inputs from the user
          performanceScore = ((5 * GPUClockSpeed) + (numOfCores * CPUClockSpeed)) * multiplier;
       
@@ -222,6 +203,7 @@ public class Project_Emmanuel_Mvutu
       System.out.println("\n" + title + "\n");//diplaying the title
    }//end of displayTitle method
    
+  //this method asks for the resolution
    public static void getResolutionString()
    {
       int resolution = 0;//to hold the place of resolution
@@ -239,5 +221,42 @@ public class Project_Emmanuel_Mvutu
       System.out.print("\nPlease select your resolution from above: ");
       resolution = keyboard.nextInt();
    }//end of getResolutionString method
+   
+   //this method returns the multiplier value
+   public static double getMultiplierValue(double monResolution)
+   { 
+     double resMultiplier = 0;// to hold the place of the multiplier
+      
+      //represents the resolution options
+      final double RESOLUTION_1 = 1;
+      final double RESOLUTION_2 = 2;
+      final double RESOLUTION_3 = 3;
+      final double RESOLUTION_4 = 4;
+     
+      //using an if/else if statement to handle the user's resolution selection
+         if(monResolution == RESOLUTION_1)
+            {
+               resMultiplier = 1;
+            }
+         else if(monResolution == RESOLUTION_2)
+            {
+               resMultiplier = .75;
+            }
+         else if(monResolution == RESOLUTION_3)
+            {
+               resMultiplier = .55;
+            }
+         else if(monResolution == RESOLUTION_4)
+            {
+               resMultiplier = .35;
+            }
+         else
+            {
+               System.out.println("invalid input, type the monitor resolution.");
+            } 
+            
+         //return the multiplier value back to the main method
+         return resMultiplier;
+   }//end of getMultiplierValue
 
 }//end of class
