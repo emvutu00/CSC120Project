@@ -104,29 +104,6 @@ public class Project_Emmanuel_Mvutu
       
          // calling the recommended quality method to get the recommended quality depending on the performance score
          recommendedGraphicQuality = getRecommendedQuality(performanceScore);
-         /*
-         //using an if/else if statement to handle the user's recommended graphic quality
-         if(performanceScore > 17000)
-            {
-               recommendedGraphicQuality = "Ultra";
-            }
-         else if(performanceScore > 15000 && performanceScore <= 17000)
-            {
-               recommendedGraphicQuality = "High";
-            }
-         else if(performanceScore > 13000 && performanceScore <= 15000)
-            {
-               recommendedGraphicQuality = "Medium";
-            }
-         else if(performanceScore > 11000 && performanceScore <= 13000)
-            {
-               recommendedGraphicQuality = "Low";
-            }
-         else
-            {
-               recommendedGraphicQuality = "Unable to play";
-            }
-         */
          
          //this if/else if statement is for the output of the monitor resolution display
             if(resolution == RESOLUTION_1)
@@ -178,7 +155,7 @@ public class Project_Emmanuel_Mvutu
             }
          }
 
-    
+         displayInformation(GPUClockSpeed, CPUClockSpeed, numOfCores, monitor, performanceScore, recommendedGraphicQuality);
          //Display the outputs of the whole code
          System.out.println("\nThe GPU clock speed: " + GPUClockSpeed + "MHz");
          System.out.println("The CPU clock speed: " + CPUClockSpeed + "MHz");
@@ -304,5 +281,17 @@ public class Project_Emmanuel_Mvutu
       //returning the recommended quality back to the main method
       return recommendedGraphicQuality;
    }// end of the recommended quality method
+   
+   //
+   public static void displayInformation(int GPU, int CPU, int corenum, String monitor, double performanceScore, String recommendedGQ)
+   {
+      //Display the outputs of the whole code
+         System.out.println("\nThe GPU clock speed: " + GPU + "MHz");
+         System.out.println("The CPU clock speed: " + CPU + "MHz");
+         System.out.println("The number of cores: " + corenum);
+         System.out.println("The monitor of resolution: " + monitor);
+         System.out.printf("The Performance Score: %,.3f",performanceScore);
+         System.out.println("\nThe Recommended Graphic Quality: " + recommendedGQ);
+   }//end of displayInformation method
 
 }//end of class
