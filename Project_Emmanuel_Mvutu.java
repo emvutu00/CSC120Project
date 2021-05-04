@@ -102,6 +102,9 @@ public class Project_Emmanuel_Mvutu
          //calling the performance score method to calculate the performance score from the given inputs from the user
          performanceScore = calculatePerformanceScore(GPUClockSpeed, numOfCores, CPUClockSpeed, multiplier);
       
+         // calling the recommended quality method to get the recommended quality depending on the performance score
+         recommendedGraphicQuality = getRecommendedQuality(performanceScore);
+         /*
          //using an if/else if statement to handle the user's recommended graphic quality
          if(performanceScore > 17000)
             {
@@ -123,8 +126,9 @@ public class Project_Emmanuel_Mvutu
             {
                recommendedGraphicQuality = "Unable to play";
             }
+         */
          
-            //this if/else if statement is for the output of the monitor resolution display
+         //this if/else if statement is for the output of the monitor resolution display
             if(resolution == RESOLUTION_1)
             {
                monitor = "1280 x 720";
@@ -220,7 +224,7 @@ public class Project_Emmanuel_Mvutu
       //ask the user to select their resolution
       System.out.print("\nPlease select your resolution from above: ");
       resolution = keyboard.nextInt();
-   }//end of getResolutionString method
+    }//end of getResolutionString method
    
    //this method returns the multiplier value
    public static double getMultiplierValue(double monResolution)
@@ -268,6 +272,37 @@ public class Project_Emmanuel_Mvutu
       
       //returning the value of the performance scare back to the main method
       return performanceScore;
-   }// end of calculatePerformanceScore method
+   }//end of calculatePerformanceScore method
+   
+   //this method returns the recommended quality depending on the performance score
+   public static String getRecommendedQuality(double pScore)
+   {
+      String recommendedGraphicQuality;//the results of the performance score
+      
+      //using an if/else if statement to handle the user's recommended graphic quality
+      if(pScore > 17000)
+         {
+            recommendedGraphicQuality = "Ultra";
+         }
+      else if(pScore > 15000 && pScore <= 17000)
+         {
+            recommendedGraphicQuality = "High";
+         }
+      else if(pScore > 13000 && pScore <= 15000)
+         {
+            recommendedGraphicQuality = "Medium";
+         }
+      else if(pScore > 11000 && pScore <= 13000)
+         {
+            recommendedGraphicQuality = "Low";
+         }
+      else
+         {
+            recommendedGraphicQuality = "Unable to play";
+         }
+      
+      //returning the recommended quality back to the main method
+      return recommendedGraphicQuality;
+   }// end of the recommended quality method
 
 }//end of class
