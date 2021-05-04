@@ -17,7 +17,6 @@ public class Project_Emmanuel_Mvutu
       double lowestPerformanceScore = 0;//this variable is to keep track of the lowest performance score
       
       String recommendedGraphicQuality;//the results of the performance score
-      String results = "Computer Hardware Graphics Quality Recommendation Tool";//title of the outputs
       String monitor;//resolution written out
       
       //represents the resolution options
@@ -29,7 +28,7 @@ public class Project_Emmanuel_Mvutu
       Scanner keyboard = new Scanner(System.in);//creating a Scanner object for  the user's input
       
       //ask the user for the number of computers that they wish to enter information for
-      System.out.println("Enter the number of computers that they wish to enter information for.");
+      System.out.print("Enter the number of computers that they wish to enter information for: ");
       numOfComputers = keyboard.nextInt();
       
       //validate the user's input with a while loop
@@ -40,7 +39,7 @@ public class Project_Emmanuel_Mvutu
       }
       
       //showing the title
-      System.out.println("\n" + results + "\n");
+      displayTitle();
       
       //use a for loop to get the user's information
       //computer is the loop control variable
@@ -221,5 +220,14 @@ public class Project_Emmanuel_Mvutu
       //display the lowest performance score
       System.out.printf("\nThe lowest performance score was: %.3f", lowestPerformanceScore);
       
-   }//end of main
+   }//end of main 
+     
+   //this method displays the title
+   public static void displayTitle()
+   {
+      String title = "Computer Hardware Graphics Quality Recommendation Tool";//title of the outputs
+      
+      System.out.println("\n" + title + "\n");//diplaying the title
+   }
+
 }//end of class
