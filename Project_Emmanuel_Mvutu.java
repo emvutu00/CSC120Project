@@ -38,7 +38,7 @@ public class Project_Emmanuel_Mvutu
          numOfComputers = keyboard.nextInt();//let user enter a valid number
       }
       
-      //the title method for displaying the title
+      //calling the title method for displaying the title
       displayTitle();
       
       //use a for loop to get the user's information
@@ -84,7 +84,7 @@ public class Project_Emmanuel_Mvutu
             numOfCores = keyboard.nextInt();//let user enter a valid number
          }
       
-         //the resolution method to get the user's choice of resollution
+         //calling the resolution method to get the user's choice of resollution
          getResolutionString();
          
          //validate the resolution choice with a while loop
@@ -92,15 +92,15 @@ public class Project_Emmanuel_Mvutu
          {
             //display invalid message if the input isnt valid
             System.out.println("Invalid input. The resolution choice should range between 1 to 4."
-                              + " Enter a valid input");
+                              + " Enter a valid input: ");
             resolution = keyboard.nextDouble();//let user enter a valid number
          }
       
-         //the multiplier method returns the value of the multiplier to the main method
+         //calling the multiplier method returns the value of the multiplier to the main method
          multiplier = getMultiplierValue(resolution);
                   
-         //calculate the performance score from the given inputs from the user
-         performanceScore = ((5 * GPUClockSpeed) + (numOfCores * CPUClockSpeed)) * multiplier;
+         //calling the performance score method to calculate the performance score from the given inputs from the user
+         performanceScore = calculatePerformanceScore(GPUClockSpeed, numOfCores, CPUClockSpeed, multiplier);
       
          //using an if/else if statement to handle the user's recommended graphic quality
          if(performanceScore > 17000)
@@ -188,10 +188,10 @@ public class Project_Emmanuel_Mvutu
       }//end of the for loop
       
       //display the highest performance score
-      System.out.printf("The highest performance score was: %.3f", highestPerformanceScore);
+      System.out.printf("The highest performance score was: %,.3f", highestPerformanceScore);
       
       //display the lowest performance score
-      System.out.printf("\nThe lowest performance score was: %.3f", lowestPerformanceScore);
+      System.out.printf("\nThe lowest performance score was: %,.3f", lowestPerformanceScore);
       
    }//end of main 
      
@@ -258,5 +258,16 @@ public class Project_Emmanuel_Mvutu
          //return the multiplier value back to the main method
          return resMultiplier;
    }//end of getMultiplierValue
+   
+   //this method calculates the performance score than returns it to the method
+   public static double calculatePerformanceScore(double GPU, double numCores, double CPU, double multiConstant)
+   {
+      double performanceScore = 0;//to hold the place of performance score
+      
+      performanceScore = ((5 * GPU) + (numCores * CPU)) * multiConstant;
+      
+      //returning the value of the performance scare back to the main method
+      return performanceScore;
+   }// end of calculatePerformanceScore method
 
 }//end of class
